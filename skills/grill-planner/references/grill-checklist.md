@@ -1,107 +1,105 @@
-# Grilling Checklist
+# 需求梳理清单
 
-Use this checklist selectively. Inspect available evidence first, then ask only questions whose answers materially affect the plan.
+有选择地使用此清单。先检查已有证据，再只询问会实质影响计划的问题。
 
-## Question design
+## 问题设计
 
-For each question, identify the decision, why it matters, viable alternatives, and a reasoned recommendation. Keep unrelated decisions separate. Ask about consequences and failure cases, not only the happy path.
+对每个问题明确：需要作出的决策、为什么重要、可行替代方案以及有依据的建议。关注后果和失败情况，而不只是理想流程。按影响和依赖排序：先问目标与范围，再问架构，最后问实施细节。每轮有价值时提出 3–5 个问题；已解决的主题不要重复追问。
 
-Prioritize by impact and dependency: purpose and scope before architecture, architecture before implementation details. Ask 3–5 questions per round when useful; stop repeating resolved topics.
+## 目标与成功标准
 
-## Goals and success
+- 用户、操作者、购买者或受影响的利益相关者是谁？
+- 要解决什么问题？当前行为必须如何改变？
+- 哪条具体用户路径可以证明成功？
+- 哪些可度量结果或可观察验收标准定义成功？
+- 这是原型、MVP、生产发布还是迁移？
 
-- Who is the user, operator, buyer, or affected stakeholder?
-- What problem is being solved, and what current behavior must change?
-- What concrete user journey demonstrates success?
-- What measurable outcomes or observable acceptance criteria define success?
-- Is this a prototype, MVP, production release, or migration?
+对于“快”“可扩展”“安全”“简单”“生产就绪”等词，追问其可测试含义。
 
-Challenge terms such as "fast," "scalable," "secure," "simple," and "production-ready" until their intended meaning is testable.
+## 范围与边界
 
-## Scope and boundaries
+- 本次迭代包含哪些能力？
+- 明确排除哪些能力？
+- 哪些现有行为和接口必须保持兼容？
+- 是否有不同发布版本或可独立交付的切片？
+- 当已提供的需求冲突时，以什么作为事实来源？
 
-- Which capabilities belong in this iteration?
-- What is explicitly excluded?
-- Which existing behaviors and interfaces must remain compatible?
-- Are there distinct releases or independently deliverable slices?
-- What is the source of truth when supplied requirements conflict?
+区分必要需求、偏好和可能的未来功能。
 
-Separate necessary requirements from preferences and possible future features.
+## 现有项目与约束
 
-## Existing project and constraints
+- 哪个项目根目录、仓库说明、代码和既有计划适用？
+- 已确定哪些语言、框架、平台和依赖？
+- 有哪些预算、期限、人员、托管或许可限制？
+- 必须复用什么？什么可以替换？
+- 必须支持哪些环境和部署目标？
 
-- What project root, repository instructions, code, and prior plans apply?
-- Which languages, frameworks, platforms, and dependencies are already established?
-- What budget, deadline, staffing, hosting, or licensing limits apply?
-- What must be reused, and what may be replaced?
-- Which environments and deployment targets must be supported?
+不要仅因为熟悉就提出新技术栈；引用检查到的路径作为现有约束的依据。
 
-Do not propose a new stack merely because it is familiar. Cite inspected paths for existing constraints.
+## 架构与职责
 
-## Architecture and responsibility
+- 哪些模块或服务拥有各项能力？
+- 哪种目录结构和模块边界适合范围？
+- 哪些内容应放在独立模块，而不是启动文件或路由处理器中？
+- 组件如何通信？状态由谁负责？
+- 有哪些更简单的替代方案？为什么拒绝？
+- 哪些决策修改成本高？
 
-- What modules or services own each capability?
-- What directory structure and module boundaries fit the scope?
-- What belongs in dedicated modules rather than bootstrap files or route handlers?
-- How do components communicate, and where is state owned?
-- What simpler alternatives exist, and why reject them?
-- Which decisions are expensive to reverse?
+暴露耦合职责、不必要的分布式系统和模糊的所有权。
 
-Expose coupled responsibilities, unnecessary distributed systems, and vague ownership.
+## 接口与数据
 
-## Interfaces and data
+- 需要哪些 API、模式、事件和外部契约？
+- 谁拥有每个契约？有哪些兼容性保证？
+- 存储什么数据、存在哪里、保留多久？
+- 需要什么一致性、并发、幂等性或顺序行为？
+- 是否需要迁移、导入/导出或回滚路径？
+- 依赖不可用或返回无效数据时会怎样？
 
-- What APIs, schemas, events, and external contracts are required?
-- Who owns each contract, and which compatibility guarantees apply?
-- What data is stored, where, and for how long?
-- What consistency, concurrency, idempotency, or ordering behavior is required?
-- Are migrations, import/export, or rollback paths needed?
-- What happens when a dependency is unavailable or returns invalid data?
+当抽象掩盖分歧时，要求具体的请求/响应或工作流示例。
 
-Ask for concrete request/response or workflow examples when abstractions conceal disagreement.
+## 安全与隐私要求
 
-## Security and privacy requirements
+- 哪些角色可以访问哪些数据和执行哪些操作？
+- 认证、授权和信任边界在哪里？
+- 是否需要租户隔离或滥用防护？
+- 是否存在敏感数据、保留期限或合规约束？
+- 如何管理密钥而不将其写入计划或源代码？
+- 哪种失败行为可以防止意外暴露？
 
-- Which actors may access which data and actions?
-- Where are authentication, authorization, and trust boundaries?
-- Is tenant isolation or abuse prevention required?
-- Are there sensitive data, retention, or compliance constraints?
-- How are secrets managed without embedding them in plans or source?
-- What failure behavior prevents unintended exposure?
+此清单只收集需求；不授权安全审计或渗透测试。
 
-Gather requirements only; this checklist does not authorize a security audit or penetration test.
+## 可靠性与运维
 
-## Reliability and operations
+- 真正重要的可用性、延迟、吞吐量和容量目标是什么？
+- 需要怎样的重试、超时、恢复和回滚行为？
+- 需要哪些日志、指标、审计能力和支持流程？
+- 如何发布和迁移才能避免破坏现有用户？
+- 当目标冲突时，允许哪些权衡？
 
-- What availability, latency, throughput, and capacity targets actually matter?
-- What retry, timeout, recovery, and rollback behavior is required?
-- What logging, metrics, auditability, and support workflows are needed?
-- How will rollout and migration avoid breaking existing users?
-- What tradeoffs are acceptable when targets conflict?
+不要编造数值目标，也不要把拟议目标当作已接受目标。
 
-Do not invent numeric targets or treat proposed targets as accepted.
+## 交付与验证
 
-## Delivery and verification
+- 哪些依赖决定阶段顺序？
+- 每个阶段结束时有哪些可独立验证的交付物？
+- 哪些具体验收标准覆盖用户路径和失败情况？
+- 现有的验证命令或端到端工作流是什么？
+- 验证需要哪些外部访问权限、夹具或环境？
+- 哪个延期决策必须在后续实施任务前解决？
 
-- What dependencies determine phase order?
-- What independently verifiable deliverable ends each phase?
-- Which concrete acceptance criteria cover the user journey and failure cases?
-- What existing validation commands or end-to-end workflows are available?
-- What external access, fixtures, or environments will validation require?
-- Which deferred decision must be resolved before a later implementation task?
+规划验证与实施验证不同：检查文档一致性不代表软件通过验收标准。
 
-Planning validation and implementation validation are different: checking document consistency does not mean the software passed its acceptance criteria.
+## 退出检查
 
-## Exit check
+请求最终批准前确认：
 
-Before requesting final approval:
+- 目标、范围和非目标明确无歧义。
+- 硬约束和重要决策已经解决。
+- 架构和接口具体到足以规划任务。
+- 用户结果和阶段验收标准可验证。
+- 拟议默认值已明确接受，或仍清楚标记为未解决。
+- 每个延期项都有用户接受的影响、解决步骤和阻塞阶段。
+- 计划名、输出路径、阶段拆分和更新范围已准备好供用户明确批准。
 
-- The goal, scope, and non-goals are unambiguous.
-- Hard constraints and consequential decisions are resolved.
-- Architecture and interfaces are specific enough to plan work.
-- User-facing outcomes and phase acceptance criteria are verifiable.
-- Proposed defaults have been explicitly accepted or remain unresolved.
-- Every deferred item has user-accepted impact, a resolution step, and the phase it blocks.
-- The plan name, output path, phase breakdown, and update scope are ready for explicit approval.
-
-An unresolved issue affecting scope, feasibility, major contracts, security boundaries, or meaningful acceptance is a blocker. Continue questioning rather than writing a formal plan.
+影响范围、可行性、主要契约、安全边界或有意义验收的未解决问题都是阻塞项。继续提问，不要生成正式计划。

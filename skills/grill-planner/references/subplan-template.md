@@ -1,110 +1,104 @@
-# Subplan Template
+# 子计划模板
 
-Use this structure for `subplans/NNN-<phase-name>.md` after the breakdown is approved. Replace placeholders, remove irrelevant sections and template guidance, and use English.
+在阶段拆分获得批准后，使用此结构创建 `subplans/NNN-<phase-name>.md`。替换占位符，删除无关章节和所有模板说明。阶段和任务 ID 在更新时保持稳定。计划文档使用中文；准确的标识符、API 名称和仓库路径保持原文。
 
-Keep phase and task IDs stable when updating. Preserve existing progress; never imply implementation happened because a plan was generated. New task and acceptance items start unchecked. Check tasks after completing their work and required checks; check acceptance items only after verification passes, with recorded evidence.
+真实反映阶段状态，不要因为生成了计划就暗示已经实施。新的任务和验收项默认未勾选；任务完成并通过所需检查后必须勾选任务复选框，验收完成并验证通过后必须勾选验收复选框。更新时保留已有进度。
 
 ---
 
-# <NNN>: <Phase Title>
+# <NNN>：<阶段标题>
 
-## Metadata
+## 元数据
 
-- Phase ID: <NNN>
-- Master plan: [<Project title>](../README.md)
-- Implementation state: Not started
-- Dependencies: <linked phase IDs or None>
-- Goal references: <master-plan goal IDs>
-- Decision references: <applicable master-plan decision IDs>
+- 阶段 ID：<NNN>
+- 总计划：[<项目标题>](../README.md)
+- 实施状态：未开始
+- 依赖：<关联阶段 ID 或无>
+- 目标引用：<总计划目标 ID>
+- 决策引用：<适用的总计划决策 ID>
 
-## Objective
+## 目标
 
-<One coherent objective with an observable completion boundary.>
+<一个具有可观察完成边界的连贯目标。>
 
-## Scope
+## 范围
 
-### Included
+### 包含
 
-- <capability, behavior, or bounded responsibility>
+- <能力、行为或有边界的职责>
 
-### Excluded
+### 排除
 
-- <work delegated to other phases or outside project scope>
+- <交给其他阶段或超出项目范围的工作>
 
-## Preconditions
+## 前置条件
 
-- <dependency deliverable, resolved deferred question, approved contract, or required environment>
+- <依赖交付物、已解决的延期问题、已批准契约或所需环境>
 
-## Design
+## 设计
 
-### Module boundaries and target paths
+### 模块边界与目标路径
 
-| Module or path | Existing or proposed | Responsibility | Planned change |
-| --- | --- | --- | --- |
-| <repository-relative path> | <existing/proposed> | <ownership> | <bounded change> |
+| 模块或路径     | 现有或拟议  | 职责     | 计划变更       |
+| -------------- | ----------- | -------- | -------------- |
+| <仓库相对路径> | <现有/拟议> | <所有权> | <有边界的变更> |
 
-### Interfaces and data
+### 接口与数据
 
-<Relevant APIs, schema changes, events, storage ownership, compatibility constraints, and error cases. Reference master-plan decisions rather than contradicting them.>
+<相关 API、模式变更、事件、存储所有权、兼容性约束和错误情况。引用总计划决策，不要与其矛盾。>
 
-### Operational behavior
+### 运行行为
 
-<Applicable authorization, isolation, failure recovery, retries, observability, migration, rollout, or rollback requirements.>
+<适用的授权、隔离、失败恢复、重试、可观测性、迁移、发布或回滚要求。>
 
-## Deliverables
+## 实施任务
 
-- <concrete artifact, working behavior, interface, migration, or operational outcome>
+- [ ] **<NNN>-T01：<可执行的任务标题>**
+  - 依赖：<阶段或任务 ID，或无>
+  - 目标路径：<已知仓库相对路径或明确拟议模块>
+  - 行动：<具体变更及设计约束>
+  - 预期输出：<可观察工件或行为>
+  - 验收引用：<NNN>-AC01
+  - 计划验证：<有依据的命令或具体检查>
+  - 完成证据：未完成；检查未执行。
 
-## Acceptance criteria
+- [ ] **<NNN>-T02：<可执行的任务标题>**
+  - 依赖：<NNN>-T01
+  - 目标路径：<路径或模块>
+  - 行动：<具体变更>
+  - 预期输出：<可观察工件或行为>
+  - 验收引用：<适用的标准 ID>
+  - 计划验证：<有依据的命令或具体检查>
+  - 完成证据：未完成；检查未执行。
 
-- [ ] **<NNN>-AC01: <observable outcome, including relevant failure cases>**
-  - Planned verification: <specific end-to-end or manual check>
-  - Required environment: <prerequisites>
-  - Verification evidence: Not run.
+## 验收标准
 
-## Implementation tasks
+- [ ] **<NNN>-AC01：<可观察结果，包括相关失败情况>**
+  - 计划验证：<具体端到端或手动检查>
+  - 所需环境：<前置条件>
+  - 验证证据：未执行。
 
-- [ ] **<NNN>-T01: <Actionable task title>**
-  - Depends on: <phase or task IDs, or None>
-  - Target paths: <known repository-relative paths or explicitly proposed modules>
-  - Action: <specific changes, including design constraints>
-  - Expected output: <observable artifact or behavior>
-  - Acceptance references: <NNN>-AC01
-  - Planned validation: <grounded command or concrete check>
-  - Completion evidence: Not completed; checks not run.
+### 完成与交接要求
 
-- [ ] **<NNN>-T02: <Actionable task title>**
-  - Depends on: <NNN>-T01
-  - Target paths: <paths or modules>
-  - Action: <specific changes>
-  - Expected output: <observable artifact or behavior>
-  - Acceptance references: <applicable criterion IDs>
-  - Planned validation: <grounded command or concrete check>
-  - Completion evidence: Not completed; checks not run.
+- <依赖阶段需要的契约或输出>
+- 在单独授权的实施期间，任务完成且所需检查通过后必须勾选任务复选框；验收验证通过后必须勾选验收复选框。记录实际命令或步骤、结果和证据位置。
+- 在准备完成提交前，必须勾选所有必需任务和验收项。失败、跳过、阻塞或未执行的检查保持未勾选，并阻止阶段完成。
+- 更新此文档和总计划的阶段状态，然后检查工作区和暂存区变更；只使用明确路径或已审阅代码块暂存该阶段的实施变更和进度更新。保留无关修改和预先存在的暂存工作；如果无法安全分离则暂停。
+- 在开始依赖阶段前，为本阶段创建一次独立完成提交。遵循仓库约定；否则使用 `feat(<plan-name>): complete subplan <NNN> - <phase-name>`。不要合并已完成子计划，也不要为每个复选框创建提交。
+- 验证成功并报告提交哈希。提交失败时阶段关闭仍等待提交；不要声称完全完成。缺少 Git、仓库或身份信息、钩子失败或变更已提交时请求用户指导。不要自动初始化 Git、修改身份、绕过钩子、推送、改写历史或创建空提交。
+- 验证结果：未执行；本文档只描述计划工作。
+- 实施需要单独授权；生成计划时不要执行任务或创建完成提交。
 
-<Add only the tasks needed for this phase, in dependency order. Do not use vague tasks such as "implement the feature" without bounded changes and expected outputs. Prefer end-to-end validation; do not add unit-test tasks unless requested.>
+## 风险与缓解措施
 
-## Risks and mitigations
+| 风险   | 影响   | 缓解或回滚 | 相关任务  |
+| ------ | ------ | ---------- | --------- |
+| <风险> | <影响> | <具体响应> | <任务 ID> |
 
-| Risk | Impact | Mitigation or rollback | Related task |
-| --- | --- | --- | --- |
-| <risk> | <impact> | <concrete response> | <task ID> |
+## 延期决策
 
-## Deferred decisions
+| 问题                 | 已接受的影响 | 解决任务  | 阻塞对象         |
+| -------------------- | ------------ | --------- | ---------------- |
+| <已接受的非阻塞问题> | <后果>       | <任务 ID> | <依赖任务或阶段> |
 
-| Question | Accepted impact | Resolution task | Blocks |
-| --- | --- | --- | --- |
-| <accepted nonblocking question> | <consequence> | <task ID> | <dependent task or phase> |
-
-<Use "None" if no details are deferred. Unresolved planning blockers must be resolved before generating this file.>
-
-## Completion and handoff
-
-- <contracts or outputs needed by dependent phases>
-- During separately authorized implementation, check each task when its work and required checks are complete; check each acceptance item only after its verification passes. Record the actual commands/procedure, outcome, and evidence location.
-- All required task and acceptance checkboxes must be checked before this subplan is ready for its completion commit. Failed, skipped, blocked, or not-run checks remain unchecked and prevent completion.
-- Update this document and the master-plan phase state, then inspect working/staged changes and stage only this subplan's implementation and progress updates using explicit paths or reviewed hunks. Preserve unrelated user edits and pre-existing staged changes; pause if safe separation is impossible.
-- Create one separate completion commit for this subplan before starting its dependent phase. Follow repository conventions; otherwise use `feat(<plan-name>): complete subplan <NNN> - <phase-name>`. Do not combine completed subplans or commit once per checklist item.
-- Verify success and report the commit hash. If committing fails, phase closure remains pending commit; do not claim full completion. Missing Git/repository/identity, failed hooks, or already committed work require user guidance. Do not automatically initialize Git, change identity, bypass hooks, push, rewrite history, or create empty commits.
-- Validation results: Not run; this document describes planned work.
-- Implementation requires separate authorization; do not execute tasks or create completion commits as part of plan generation.
+<没有延期细节时填写“无”。未解决的规划阻塞项必须在生成此文件前解决。>

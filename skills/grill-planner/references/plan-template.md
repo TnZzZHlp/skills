@@ -1,131 +1,131 @@
-# Master Plan Template
+# 总计划模板
 
-Use this structure for `docs/plans/<confirmed-plan-name>/README.md` after explicit approval. Replace placeholders with confirmed information. Remove irrelevant sections and all template guidance. Use English.
+在获得明确批准后，使用此结构创建 `docs/plans/<confirmed-plan-name>/README.md`。替换占位符，删除无关章节和所有模板说明。计划文档使用中文；准确的标识符、API 名称和仓库路径保持原文。
 
-Implementation status must be truthful. A newly approved plan is not an implemented feature. New success criteria start unchecked; check them only when verified and record evidence. Preserve verified progress when updating.
+实施状态必须真实。新批准的计划不代表功能已经实施。新的成功标准默认未勾选；完成并验证通过后必须勾选对应复选框，并记录证据。更新计划时保留已经验证的进度。
 
 ---
 
-# <Project or Feature Title>
+# <项目或功能标题>
 
-## Plan metadata
+## 计划信息
 
-- Plan name: <confirmed-kebab-case-name>
-- Project root: <approved project root; use a portable repository-relative description where possible>
-- Plan directory: <approved repository-relative directory>
-- Planning state: Approved
-- Implementation state: Not started
-- Approval: <concise reference to explicit user confirmation; no invented identity or timestamp>
+- 计划名：<已确认的 kebab-case 名称>
+- 项目根目录：<已批准的项目根目录；尽可能使用可移植的仓库相对描述>
+- 计划目录：<已批准的仓库相对目录>
+- 规划状态：已批准
+- 实施状态：未开始
+- 批准依据：<对用户明确确认的简要引用；不得编造身份或时间戳>
 
-## Summary
+## 概述
 
-<Problem, intended users, desired outcome, and current context.>
+<问题、目标用户、期望结果和当前上下文。>
 
-## Goals and success criteria
+## 目标与成功标准
 
-- [ ] **G01: <goal>** — <specific observable outcome>
-  - Planned verification: <concrete check and prerequisites>
-  - Verification evidence: Not run.
+- [ ] **G01：<目标>** — <具体可观察结果>
+  - 计划验证：<具体检查和前置条件>
+  - 验证证据：未执行。
 
-## Scope
+## 范围
 
-### Included
+### 包含
 
-- <capability or required behavior>
+- <能力或必须实现的行为>
 
-### Non-goals
+### 非目标
 
-- <explicitly excluded capability>
+- <明确排除的能力>
 
-## Current state and evidence
+## 当前状态与依据
 
-| Finding | Evidence | Planning impact |
+| 发现 | 依据 | 对规划的影响 |
 | --- | --- | --- |
-| <repository fact or user-supplied requirement> | <path or confirmed source> | <constraint or opportunity> |
+| <仓库事实或用户需求> | <路径或已确认来源> | <约束或机会> |
 
-<For a greenfield project, identify that no existing implementation was inspected.>
+<对于全新项目，说明没有检查现有实现。>
 
-## Constraints
+## 约束
 
-- <accepted technical, product, compatibility, operational, or delivery constraint>
+- <已接受的技术、产品、兼容性、运行或交付约束>
 
-## Architecture
+## 架构
 
-### Responsibility boundaries
+### 职责边界
 
-| Module or service | Responsibility | Owned state or contract |
+| 模块或服务 | 职责 | 所有状态或契约 |
 | --- | --- | --- |
-| <module> | <bounded responsibility> | <state or interface> |
+| <模块> | <有边界的职责> | <状态或接口> |
 
-### Proposed directory structure
+### 拟议目录结构
 
-<Repository-grounded directory/module tree. Distinguish existing paths from proposed paths. Keep entry points thin.>
+<基于仓库事实的目录/模块树。区分现有路径和拟议路径。保持入口精简。>
 
-### Interfaces and data flows
+### 接口与数据流
 
-<Key APIs, schemas, events, storage ownership, external dependencies, and failure behavior.>
+<关键 API、模式、事件、存储所有权、外部依赖和失败行为。>
 
-### Operational requirements
+### 运行要求
 
-<Applicable security, privacy, reliability, observability, migration, and rollback requirements.>
+<适用的安全、隐私、可靠性、可观测性、迁移和回滚要求。>
 
-## Decisions
+## 决策
 
-| ID | Decision | Rationale | Alternatives and tradeoffs |
+| 编号 | 决策 | 理由 | 替代方案与权衡 |
 | --- | --- | --- | --- |
-| D01 | <confirmed decision> | <reason> | <rejected alternatives and consequences> |
+| D01 | <已确认决策> | <理由> | <拒绝的替代方案及后果> |
 
-## Accepted assumptions
+## 已接受的假设
 
-| ID | Assumption | Impact if false | User acceptance |
+| 编号 | 假设 | 如果错误的影响 | 用户接受依据 |
 | --- | --- | --- | --- |
-| A01 | <explicitly accepted nonblocking assumption> | <impact> | <confirmation reference> |
+| A01 | <明确接受的非阻塞假设> | <影响> | <确认依据> |
 
-<Use "None" when no assumptions were accepted.>
+<没有假设时填写“无”。>
 
-## Subplans
+## 子计划
 
-| ID | Subplan | Goal and deliverables | Depends on | Acceptance boundary | Implementation state |
+| 编号 | 子计划 | 目标与交付物 | 依赖 | 验收边界 | 实施状态 |
 | --- | --- | --- | --- | --- | --- |
-| 001 | [<Phase title>](subplans/001-<phase-name>.md) | <scope and outputs> | None | <observable completion boundary> | Not started |
-| 002 | [<Phase title>](subplans/002-<phase-name>.md) | <scope and outputs> | 001 | <observable completion boundary> | Not started |
+| 001 | [<阶段标题>](subplans/001-<phase-name>.md) | <范围和输出> | 无 | <可观察的完成边界> | 未开始 |
+| 002 | [<阶段标题>](subplans/002-<phase-name>.md) | <范围和输出> | 001 | <可观察的完成边界> | 未开始 |
 
-### Execution order
+### 执行顺序
 
-<Dependency order, integration checkpoints, and safe parallel work if relevant. No work is launched by this plan.>
+<依赖顺序、集成检查点和适用的安全并行工作。此计划不会启动工作。>
 
-## Validation strategy
+## 验证策略
 
-| Criterion | Planned check | Environment or prerequisite | State |
+| 标准 | 计划检查 | 环境或前置条件 | 状态 |
 | --- | --- | --- | --- |
-| G01 | <grounded end-to-end check or observable verification> | <required access, data, or environment> | Not run |
+| G01 | <有依据的端到端检查或可观察验证> | <所需访问权限、数据或环境> | 未执行 |
 
-<List known commands only when supported by repository evidence or an approved tooling decision. Do not claim checks passed.>
+<只有仓库证据或已批准的工具决策支持时才列出已知命令。不要声称检查已通过。>
 
-## Risks
+## 风险
 
-| Risk | Impact | Mitigation | Affected phase |
+| 风险 | 影响 | 缓解措施 | 受影响阶段 |
 | --- | --- | --- | --- |
-| <risk> | <impact> | <action or contingency> | <phase ID> |
+| <风险> | <影响> | <行动或应急方案> | <阶段 ID> |
 
-## Accepted deferred questions
+## 已接受的延期问题
 
-| ID | Deferred question | Accepted impact | Resolution step | Must resolve before |
+| 编号 | 延期问题 | 已接受的影响 | 解决步骤 | 必须在何时解决 |
 | --- | --- | --- | --- | --- |
-| Q01 | <nonblocking detail> | <user-accepted consequence> | <concrete decision or investigation> | <phase or task> |
+| Q01 | <非阻塞细节> | <用户接受的后果> | <具体决策或调查> | <阶段或任务> |
 
-<Use "None" if nothing is deferred. Do not put unresolved planning blockers here.>
+<没有延期问题时填写“无”。不要将未解决的规划阻塞项放在这里。>
 
-## Implementation progress and commits
+## 实施进度与提交
 
-- During separately authorized implementation, check completed task items and verified acceptance items in each subplan, and update the corresponding phase state here. Check master-plan success criteria only after their full outcome is verified; record actual evidence.
-- A finished subplan requires all its task and acceptance checkboxes checked. Failed, skipped, blocked, or not-run checks prevent completion.
-- Include that subplan's implementation changes and verified plan progress in one separate completion commit before starting the next dependent subplan. Do not batch multiple completed subplans into one commit.
-- Inspect working and staged changes; stage only reviewed paths or hunks for that subplan. Preserve unrelated edits and pre-existing staged work. If safe separation is impossible, pause for guidance.
-- Follow repository commit conventions; otherwise use `feat(<plan-name>): complete subplan <NNN> - <phase-name>`. Report the verified commit hash in the handoff, not a fabricated hash in this document.
-- Commit failure leaves phase closure pending commit. Missing Git/repository/identity, failed hooks, or already committed changes require user guidance; do not initialize Git, alter identity, bypass hooks, rewrite history, push, or create empty commits automatically.
-- Plan generation and plan-only revisions do not create these completion commits.
+- 在获得单独实施授权后，任务完成且验证通过时必须勾选对应子计划中的任务和验收复选框，并同步此处的阶段状态。只有完整结果验证通过后才勾选总计划成功标准复选框，并记录实际证据。
+- 一个完成的子计划必须勾选全部任务和验收项。失败、跳过、阻塞或未执行的检查会阻止子计划完成。
+- 每个子计划的实施变更和已验证的计划进度必须在一个独立的完成提交中提交，然后才能开始下一个依赖它的子计划。不要把多个完成的子计划合并为一次提交。
+- 检查工作区和暂存区变更；只为该子计划暂存已审阅的路径或代码块。保留无关修改和预先存在的暂存工作。如果无法安全分离，暂停并请求指导。
+- 遵循仓库提交约定；否则使用 `feat(<plan-name>): complete subplan <NNN> - <phase-name>`。在交接中报告已验证的提交哈希，不要在本文档中编造哈希。
+- 提交失败时，阶段关闭仍处于等待提交状态。缺少 Git、仓库或身份信息、钩子失败或变更已提交时请求用户指导；不要自动初始化 Git、修改身份、绕过钩子、改写历史、推送或创建空提交。
+- 计划生成和仅更新计划不会创建这些完成提交。
 
-## Handoff
+## 交接
 
-<Identify the first phase and its prerequisites for a separately authorized implementation workflow. State that generating this plan does not start implementation.>
+<说明第一个阶段及其前置条件，供获得单独授权的实施工作流使用。说明生成本计划不会启动实施。>
